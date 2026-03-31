@@ -109,7 +109,7 @@ export default function Insights() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white overflow-hidden">
+      <section className="relative section-padding gradient-soft overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
@@ -121,10 +121,10 @@ export default function Insights() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-slate-900">
               Insights & Resources
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-muted max-w-3xl mx-auto">
               Stay informed with the latest industry trends, regulatory updates, and expert analysis
             </p>
           </motion.div>
@@ -132,7 +132,7 @@ export default function Insights() {
       </section>
 
       {/* Categories */}
-      <section className="py-12 bg-white border-b">
+      <section className="py-10 bg-white/80 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-4">
             {categories.map((category, index) => (
@@ -144,10 +144,10 @@ export default function Insights() {
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 whileHover={{ scale: 1.05 }}
                 onClick={() => setSelectedCategory(category.name)}
-                className={`px-6 py-3 rounded-full font-medium transition-all ${
+                className={`px-6 py-3 rounded-xl font-medium transition-all ${
                   selectedCategory === category.name
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-600'
+                    ? 'gradient-brand text-white shadow-md'
+                    : 'bg-slate-100 text-slate-700 hover:bg-blue-100 hover:text-blue-600'
                 }`}
               >
                 {category.name} ({category.count})
@@ -158,7 +158,7 @@ export default function Insights() {
       </section>
 
       {/* Insights Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="section-padding bg-white/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredInsights.length > 0 ? (
             <motion.div
@@ -172,7 +172,7 @@ export default function Insights() {
                   key={insight.id}
                   variants={fadeInUp}
                   whileHover={{ y: -10, scale: 1.02 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="surface-card surface-card-hover overflow-hidden p-0"
                 >
                   <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                     <insight.icon className="w-16 h-16 text-white opacity-80" />
@@ -230,7 +230,7 @@ export default function Insights() {
               transition={{ duration: 0.6 }}
               className="text-center mt-12"
             >
-              <button className="px-8 py-3 bg-white border-2 border-blue-600 text-blue-600 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-colors">
+              <button className="btn-secondary">
                 Load More Insights
               </button>
             </motion.div>
@@ -239,7 +239,7 @@ export default function Insights() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <section className="section-padding bg-slate-900 text-white">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -252,15 +252,15 @@ export default function Insights() {
           <p className="text-xl text-blue-100 mb-8">
             Subscribe to our newsletter and receive the latest insights, updates, and industry news directly in your inbox.
           </p>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+          <form className="mx-auto flex max-w-lg flex-col gap-4 sm:flex-row">
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-6 py-4 rounded-full text-gray-900 outline-none focus:ring-2 focus:ring-white"
+              className="focus-ring flex-1 rounded-xl border border-slate-200 px-6 py-4 text-slate-900"
             />
             <button
               type="submit"
-              className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+              className="btn-primary"
             >
               Subscribe
             </button>
@@ -269,7 +269,7 @@ export default function Insights() {
       </section>
 
       {/* Resources Section */}
-      <section className="py-20 bg-white">
+      <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -301,7 +301,7 @@ export default function Insights() {
                 key={index}
                 variants={fadeInUp}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 border border-blue-100 hover:border-blue-300 transition-all"
+                className="surface-card surface-card-hover gradient-soft p-6"
               >
                 <FileText className="w-12 h-12 text-blue-600 mb-4" />
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
@@ -311,7 +311,7 @@ export default function Insights() {
                   <span>{resource.type}</span>
                   <span>{resource.pages}</span>
                 </div>
-                <button className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                <button className="btn-primary mt-4 w-full py-2.5">
                   Download
                 </button>
               </motion.div>
@@ -321,7 +321,7 @@ export default function Insights() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="section-padding bg-white/70">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -337,14 +337,14 @@ export default function Insights() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+              className="btn-primary"
             >
               Contact Our Experts
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
             <Link
               to="/services"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-blue-600 text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-all duration-200"
+              className="btn-secondary"
             >
               Explore Services
             </Link>

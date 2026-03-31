@@ -1,5 +1,16 @@
-import { Menu, X, Mail, Phone, Linkedin, Facebook, Twitter } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import {
+  Briefcase,
+  Compass,
+  Home,
+  Info,
+  Lightbulb,
+  Mail,
+  Menu,
+  Users,
+  X,
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { type ElementType, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 type Page = 'home' | 'about' | 'services' | 'team' | 'insights' | 'contact';
@@ -11,123 +22,109 @@ export default function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 16);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems: { path: string; page: Page; label: string }[] = [
-    { path: '/', page: 'home', label: 'Home' },
-    { path: '/about', page: 'about', label: 'About' },
-    { path: '/services', page: 'services', label: 'Services' },
-    { path: '/team', page: 'team', label: 'Team' },
-    { path: '/insights', page: 'insights', label: 'Insights' },
-    { path: '/contact', page: 'contact', label: 'Contact' },
+  const navItems: { path: string; page: Page; label: string; icon: ElementType }[] = [
+    { path: '/', page: 'home', label: 'Home', icon: Home },
+    { path: '/about', page: 'about', label: 'About', icon: Info },
+    { path: '/services', page: 'services', label: 'Services', icon: Briefcase },
+    { path: '/team', page: 'team', label: 'Team', icon: Users },
+    { path: '/insights', page: 'insights', label: 'Insights', icon: Lightbulb },
+    { path: '/contact', page: 'contact', label: 'Contact', icon: Mail },
   ];
 
-  const getCurrentPage = (): Page => {
-    const path = location.pathname;
-    const item = navItems.find(item => item.path === path);
-    return item ? item.page : 'home';
-  };
-
-  const currentPage = getCurrentPage();
+  const currentPath = location.pathname;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="rnm-topbar text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 hidden md:flex items-center justify-between text-xs lg:text-sm">
-          <div className="flex items-center gap-6">
-            <span className="inline-flex items-center gap-2 opacity-95">
-              <Mail className="w-4 h-4" /> rnm@rnm.in
-            </span>
-            <span className="inline-flex items-center gap-2 opacity-95">
-              <Phone className="w-4 h-4" /> +91-11-43192000
-            </span>
+    <nav
+      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+        isScrolled
+          ? 'border-slate-200/70 bg-white/95 shadow-md backdrop-blur-xl'
+          : 'border-transparent bg-white/85 backdrop-blur-lg'
+      }`}
+    >
+      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="group flex items-center gap-3">
+          <span className="flex h-11 w-11 items-center justify-center rounded-xl gradient-brand text-white shadow-md">
+            <Compass className="h-5 w-5" />
+          </span>
+          <div>
+            <p className="text-lg font-extrabold tracking-tight text-slate-900">RNM India</p>
+            <p className="text-xs text-slate-500">Financial Advisory Partners</p>
           </div>
-          <div className="flex items-center gap-3">
-            <a href="#" className="hover:text-amber-300 transition-colors"><Twitter className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-amber-300 transition-colors"><Facebook className="w-4 h-4" /></a>
-            <a href="#" className="hover:text-amber-300 transition-colors"><Linkedin className="w-4 h-4" /></a>
-          </div>
-        </div>
-      </div>
+        </Link>
 
-      <div
-        className={`transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-lg' : 'bg-white shadow-sm'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-          <Link
-            to="/"
-            className="flex items-center cursor-pointer group"
-          >
-            <div className="text-3xl font-bold bg-gradient-to-r from-blue-900 to-cyan-700 bg-clip-text text-transparent tracking-wide">
-              RNM
-            </div>
-            <div className="ml-2 text-sm text-slate-600 group-hover:text-blue-700 transition-colors">
-              India
-            </div>
-          </Link>
+        <div className="hidden items-center gap-6 md:flex">
+          {navItems.map(({ path, label, icon: NavIcon }) => {
+            const active = currentPath === path;
 
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map(({ path, page, label }) => (
+            return (
               <Link
-                key={page}
+                key={path}
                 to={path}
-                className={`relative text-sm font-medium transition-colors duration-200 ${
-                  currentPage === page
-                    ? 'text-blue-700'
-                    : 'text-slate-700 hover:text-blue-700'
+                className={`group relative inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
+                  active ? 'text-primary' : 'text-slate-600 hover:text-primary'
                 }`}
               >
+                <NavIcon className="h-4 w-4" />
                 {label}
-                {currentPage === page && (
-                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-cyan-600" />
-                )}
+                <span
+                  className={`absolute -bottom-2 left-0 h-0.5 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 transition-all duration-300 ${
+                    active ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
               </Link>
-            ))}
-          </div>
+            );
+          })}
 
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
-            ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
-            )}
-          </button>
+          <Link to="/contact" className="btn-primary px-5 py-2.5 text-sm">
+            Book Consultation
+          </Link>
         </div>
-        </div>
+
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          className="rounded-xl border border-slate-200 bg-white p-2.5 text-slate-700 shadow-sm transition hover:scale-105 md:hidden"
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
 
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isMobileMenuOpen ? 'max-h-96' : 'max-h-0'
-        }`}
+      <motion.div
+        initial={false}
+        animate={{ height: isMobileMenuOpen ? 'auto' : 0, opacity: isMobileMenuOpen ? 1 : 0 }}
+        transition={{ duration: 0.4 }}
+        className="overflow-hidden border-t border-slate-200/80 bg-white md:hidden"
       >
-        <div className="px-4 py-4 space-y-3 bg-white border-t border-gray-100">
-          {navItems.map(({ path, page, label }) => (
-            <Link
-              key={page}
-              to={path}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-200 ${
-                currentPage === page
-                  ? 'bg-blue-700 text-white'
-                  : 'text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+        <div className="space-y-2 px-4 py-4 sm:px-6">
+          {navItems.map(({ path, label, icon: NavIcon }) => {
+            const active = currentPath === path;
+
+            return (
+              <Link
+                key={path}
+                to={path}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium transition ${
+                  active
+                    ? 'gradient-brand text-white shadow-md'
+                    : 'text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                <NavIcon className="h-4 w-4" />
+                {label}
+              </Link>
+            );
+          })}
         </div>
-      </div>
+      </motion.div>
     </nav>
   );
 }

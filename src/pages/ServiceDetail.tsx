@@ -114,7 +114,7 @@ export default function ServiceDetail() {
   const ServiceIcon = details.icon;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-app-bg">
       <section
         className={`relative py-20 bg-gradient-to-br ${details.heroGradient} text-white overflow-hidden`}
       >
@@ -137,9 +137,9 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
+      <section className="section-padding bg-white/70">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl shadow-lg border border-blue-100 p-8 md:p-10">
+          <div className="surface-card">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">What We Deliver</h2>
             <ul className="space-y-4">
               {details.offerings.map((item) => (
@@ -152,14 +152,14 @@ export default function ServiceDetail() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-7 py-3 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition-colors"
+                className="btn-primary"
               >
                 Get in Touch
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
               <Link
                 to="/services"
-                className="inline-flex items-center justify-center px-7 py-3 border-2 border-blue-700 text-blue-700 rounded-full font-semibold hover:bg-blue-50 transition-colors"
+                className="btn-secondary"
               >
                 Back to Services
               </Link>

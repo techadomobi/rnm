@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
-  Users,
   Award,
-  TrendingUp,
-  Shield,
-  Target,
   CheckCircle,
-  Star,
   ChevronDown,
+  Shield,
+  Star,
+  Target,
+  TrendingUp,
+  Users,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -17,10 +17,10 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const stats = [
-    { icon: Award, value: '75+', label: 'Years of Experience' },
-    { icon: Users, value: '200+', label: 'Professionals' },
-    { icon: TrendingUp, value: '1000+', label: 'Happy Clients' },
-    { icon: CheckCircle, value: '1000+', label: 'Projects Completed' },
+    { icon: Award, value: '75+', label: 'Years of Experience', status: 'Legacy Excellence' },
+    { icon: Users, value: '200+', label: 'Professionals', status: 'Growing Team' },
+    { icon: TrendingUp, value: '1000+', label: 'Happy Clients', status: 'High Trust' },
+    { icon: CheckCircle, value: '1000+', label: 'Projects Completed', status: 'On-Time Delivery' },
   ];
 
   const services = [
@@ -118,263 +118,211 @@ export default function Home() {
     },
   ];
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  };
-
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center rnm-hero pt-20 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30" />
-        </div>
+      <section className="relative overflow-hidden gradient-hero section-padding">
+        <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-blue-300/30 blur-3xl" />
+        <div className="pointer-events-none absolute -right-20 top-12 h-80 w-80 rounded-full bg-violet-300/30 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto max-w-4xl text-center"
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">
+            <span className="badge-info mb-5">Future-ready Finance for Ambitious Teams</span>
+            <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">
               Forward-Thinking Financial Solutions
-              <span className="block bg-gradient-to-r from-blue-700 to-cyan-700 bg-clip-text text-transparent">
+              <span className="mt-2 block bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
                 for Future-Ready Businesses
               </span>
             </h1>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
+            <p className="mx-auto mt-6 max-w-2xl text-base text-muted md:text-lg">
               We help growth-oriented businesses overcome financial challenges with
               future-proof roadmaps and integrated advisory services.
             </p>
-            <Link
-              to="/contact"
-              className="group inline-flex items-center px-8 py-4 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              Start Your Financial Transformation
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+
+            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link to="/contact" className="btn-primary">
+                Start Your Financial Transformation
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <Link to="/services" className="btn-secondary">
+                Explore Services
+              </Link>
+            </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
           >
             {stats.map((stat, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
+                key={stat.label}
+                initial={{ opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                whileHover={{ y: -10, scale: 1.05 }}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                transition={{ duration: 0.45, delay: 0.08 * index }}
+                whileHover={{ y: -4 }}
+                className="stat-card"
               >
-                <stat.icon className="w-10 h-10 text-blue-600 mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
+                <stat.icon className="mx-auto mb-3 h-9 w-9 text-primary" />
+                <p className="text-3xl font-extrabold text-slate-900">{stat.value}</p>
+                <p className="mt-1 text-sm text-muted">{stat.label}</p>
+                <span className="badge-ok mt-4">{stat.status}</span>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-white rnm-mesh">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Solutions That Work Together.
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <h2 className="section-title">Solutions That Work Together</h2>
+            <p className="section-subtitle">
               Let our audit, legal, financial, and advisory offerings work as one
               integrated ecosystem while you focus on growth.
             </p>
           </motion.div>
 
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="group bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100"
+              <motion.article
+                key={service.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.06 }}
+                whileHover={{ y: -6 }}
+                className="surface-card surface-card-hover"
               >
-                <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-8 h-8 text-white" />
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl gradient-brand text-white shadow-md">
+                  <service.icon className="h-7 w-7" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
-              </motion.div>
+                <h3 className="mb-2 text-xl font-bold">{service.title}</h3>
+                <p className="text-muted">{service.description}</p>
+              </motion.article>
             ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mt-12"
-          >
-            <Link
-              to="/services"
-              className="inline-flex items-center px-8 py-3 bg-blue-700 text-white rounded-full font-semibold hover:bg-blue-800 transition-colors"
-            >
-              Partner with Us
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-20 rnm-dark-section text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-slate-900 text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Why Choose RNM</h2>
-            <p className="text-xl text-blue-100">
-              Trusted by leading businesses for over seven decades
+            <h2 className="section-title text-white">Why Choose RNM</h2>
+            <p className="mx-auto max-w-3xl text-slate-300">
+              Trusted by leading businesses for over seven decades.
             </p>
           </motion.div>
 
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {benefits.map((benefit, index) => (
               <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ scale: 1.05 }}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300"
+                key={benefit.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.05 }}
+                whileHover={{ y: -4 }}
+                className="rounded-2xl border border-slate-700 bg-slate-800/70 p-6 shadow-md"
               >
-                <CheckCircle className="w-12 h-12 text-blue-200 mb-4" />
-                <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                <p className="text-blue-100">{benefit.description}</p>
+                <CheckCircle className="mb-3 h-9 w-9 text-emerald-400" />
+                <h3 className="mb-1 text-xl font-bold text-white">{benefit.title}</h3>
+                <p className="text-slate-300">{benefit.description}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Client Reviews: Reliability Meets Trust
-            </h2>
-            <p className="text-xl text-slate-600">What our clients say about us</p>
+            <h2 className="section-title">Client Reviews: Reliability Meets Trust</h2>
+            <p className="section-subtitle">What our clients say about us</p>
           </motion.div>
 
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.07 }}
+                whileHover={{ y: -4 }}
+                className="surface-card"
               >
-                <div className="flex mb-4">
+                <div className="mb-4 flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <p className="text-gray-600 mb-6 italic leading-relaxed">
-                  "{testimonial.content}"
+                <p className="mb-5 text-muted">&quot;{testimonial.content}&quot;</p>
+                <p className="font-semibold text-slate-900">{testimonial.name}</p>
+                <p className="text-sm text-muted">
+                  {testimonial.position}, {testimonial.company}
                 </p>
-                <div>
-                  <div className="font-bold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-500">
-                    {testimonial.position}, {testimonial.company}
-                  </div>
-                </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-white/70">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.5 }}
+            className="mb-12 text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">Find answers to common questions</p>
+            <h2 className="section-title">Frequently Asked Questions</h2>
+            <p className="section-subtitle">Find answers to common questions</p>
           </motion.div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
+                key={faq.question}
+                initial={{ opacity: 0, x: -18 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="surface-card p-0"
               >
                 <button
+                  type="button"
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
+                  className="flex w-full items-center justify-between px-6 py-5 text-left md:px-8"
                 >
-                  <span className="font-semibold text-gray-900 text-lg">
-                    {faq.question}
-                  </span>
+                  <span className="pr-6 text-lg font-semibold text-slate-900">{faq.question}</span>
                   <ChevronDown
-                    className={`w-6 h-6 text-blue-600 transition-transform duration-300 ${
+                    className={`h-5 w-5 text-primary transition-transform duration-300 ${
                       openFaq === index ? 'rotate-180' : ''
                     }`}
                   />
@@ -385,12 +333,10 @@ export default function Home() {
                     height: openFaq === index ? 'auto' : 0,
                     opacity: openFaq === index ? 1 : 0,
                   }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.35 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-8 pb-6 text-gray-600 leading-relaxed">
-                    {faq.answer}
-                  </div>
+                  <div className="px-6 pb-6 text-muted md:px-8">{faq.answer}</div>
                 </motion.div>
               </motion.div>
             ))}
@@ -398,59 +344,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Insights Banner */}
-      <section className="py-20 bg-slate-900 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-padding bg-slate-900 text-white">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold mb-5"
+            transition={{ duration: 0.5 }}
+            className="text-3xl font-bold md:text-5xl"
           >
             Stay Ahead with RNM Insights
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg text-slate-200 max-w-3xl mx-auto mb-8"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mx-auto mt-5 max-w-2xl text-slate-300"
           >
             Read RNM&apos;s executive newsletter for curated analysis on tax, finance,
             and business policy built for leaders who think ahead.
           </motion.p>
-          <Link
-            to="/insights"
-            className="inline-flex items-center px-8 py-3 bg-amber-400 text-slate-900 rounded-full font-semibold hover:bg-amber-300 transition-colors"
-          >
+          <Link to="/insights" className="btn-primary mt-8">
             Read More
-            <ArrowRight className="ml-2 w-5 h-5" />
+            <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's discuss how we can help your business achieve its financial goals
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-gray-100 transform hover:scale-105 transition-all duration-200 shadow-lg"
-          >
-            Contact Us Today
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
-        </motion.div>
       </section>
     </div>
   );

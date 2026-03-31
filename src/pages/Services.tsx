@@ -135,7 +135,7 @@ export default function Services() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white overflow-hidden">
+      <section className="relative section-padding gradient-soft overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
@@ -147,10 +147,10 @@ export default function Services() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-slate-900">
               Our Services
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-muted max-w-3xl mx-auto">
               Comprehensive financial solutions tailored to your business needs
             </p>
           </motion.div>
@@ -158,7 +158,7 @@ export default function Services() {
       </section>
 
       {/* Services List */}
-      <section className="py-20 bg-white">
+      <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {services.map((service, index) => (
@@ -180,15 +180,15 @@ export default function Services() {
                   >
                     <service.icon className="w-10 h-10 text-white" />
                   </motion.div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                     {service.title}
                   </h2>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-lg text-muted mb-6 leading-relaxed">
                     {service.description}
                   </p>
                   <Link
                     to={service.path}
-                    className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors group"
+                    className="btn-primary group"
                   >
                     Learn More
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -202,8 +202,8 @@ export default function Services() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="flex-1 w-full"
                 >
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-lg">
-                    <h3 className="text-xl font-bold text-gray-900 mb-6">
+                  <div className="surface-card gradient-soft">
+                    <h3 className="text-xl font-bold text-slate-900 mb-6">
                       Key Features
                     </h3>
                     <ul className="space-y-3">
@@ -217,7 +217,7 @@ export default function Services() {
                           className="flex items-start"
                         >
                           <CheckCircle className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
-                          <span className="text-gray-700">{feature}</span>
+                          <span className="text-muted">{feature}</span>
                         </motion.li>
                       ))}
                     </ul>
@@ -230,7 +230,7 @@ export default function Services() {
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="section-padding bg-white/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -239,10 +239,10 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="section-title text-slate-900 mb-4">
               Industries We Serve
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="section-subtitle">
               Expertise across diverse sectors and industries
             </p>
           </motion.div>
@@ -259,10 +259,10 @@ export default function Services() {
                 key={index}
                 variants={fadeInUp}
                 whileHover={{ y: -10, scale: 1.05 }}
-                className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300"
+                className="surface-card surface-card-hover p-6 text-center"
               >
                 <industry.icon className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-                <p className="text-gray-900 font-semibold">{industry.name}</p>
+                <p className="text-slate-900 font-semibold">{industry.name}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -270,7 +270,7 @@ export default function Services() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <section className="section-padding bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="initial"
@@ -305,7 +305,7 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
+      <section className="section-padding">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -313,15 +313,15 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-muted mb-8">
             Get in touch with our experts to discuss your specific needs
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center px-8 py-4 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
+            className="btn-primary"
           >
             Contact Us Today
             <ArrowRight className="ml-2 w-5 h-5" />

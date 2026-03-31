@@ -12,9 +12,9 @@ import ServiceDetail from './pages/ServiceDetail';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-app-bg text-slate-800">
         <Navigation />
-        <main className="pt-20 md:pt-28">
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

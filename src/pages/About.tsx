@@ -94,7 +94,7 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white overflow-hidden">
+      <section className="relative section-padding gradient-soft overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
@@ -107,8 +107,8 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">About RNM India</h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-slate-900">About RNM India</h1>
+            <p className="text-base md:text-xl text-muted max-w-3xl mx-auto">
               Building trust and delivering excellence since 1946
             </p>
           </motion.div>
@@ -124,11 +124,11 @@ export default function About() {
                 key={index}
                 variants={fadeInUp}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 transition-all duration-300"
+                className="bg-white rounded-2xl p-6 text-center shadow-md border border-slate-200 hover:shadow-lg transition-all duration-300"
               >
-                <highlight.icon className="w-10 h-10 mx-auto mb-3 text-blue-200" />
-                <div className="text-3xl font-bold mb-1">{highlight.value}</div>
-                <div className="text-sm text-blue-100">{highlight.label}</div>
+                <highlight.icon className="w-10 h-10 mx-auto mb-3 text-blue-600" />
+                <div className="text-3xl font-bold mb-1 text-slate-900">{highlight.value}</div>
+                <div className="text-sm text-slate-600">{highlight.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -136,7 +136,7 @@ export default function About() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-20 bg-white">
+      <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -204,7 +204,7 @@ export default function About() {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="section-padding bg-white/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -233,7 +233,7 @@ export default function About() {
                 key={index}
                 variants={fadeInUp}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="surface-card surface-card-hover"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-6">
                   <value.icon className="w-8 h-8 text-white" />
@@ -247,7 +247,7 @@ export default function About() {
       </section>
 
       {/* Leadership Team Section */}
-      <section className="py-20 bg-white">
+      <section className="section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -276,7 +276,7 @@ export default function About() {
                 key={index}
                 variants={fadeInUp}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="group bg-gradient-to-br from-white to-blue-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-100"
+                className="group surface-card surface-card-hover"
               >
                 <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Users className="w-12 h-12 text-white" />
@@ -295,7 +295,7 @@ export default function About() {
       </section>
 
       {/* Vision Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <section className="section-padding bg-slate-900 text-white">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}

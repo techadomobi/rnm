@@ -1,110 +1,90 @@
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Building2,
+  Facebook,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Twitter,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
+  const quickLinks = [
+    { to: '/', label: 'Home' },
+    { to: '/about', label: 'About' },
+    { to: '/services', label: 'Services' },
+    { to: '/team', label: 'Team' },
+    { to: '/insights', label: 'Insights' },
+    { to: '/contact', label: 'Contact' },
+  ];
+
   return (
-    <footer className="rnm-dark-section text-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-4">RNM India</h3>
-            <p className="text-sm leading-relaxed mb-4">
-              Forward-thinking financial solutions for future-ready businesses with
-              over 75 years of trusted advisory excellence.
-            </p>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-amber-400 hover:text-slate-900 transition-colors"
-              >
-                <Linkedin className="w-5 h-5 text-white" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-amber-400 hover:text-slate-900 transition-colors"
-              >
-                <Twitter className="w-5 h-5 text-white" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-amber-400 hover:text-slate-900 transition-colors"
-              >
-                <Facebook className="w-5 h-5 text-white" />
-              </a>
+    <footer className="mt-8 border-t border-slate-200 bg-slate-950 text-slate-200">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-8">
+        <div className="lg:col-span-2">
+          <div className="mb-5 inline-flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white">
+              <Building2 className="h-5 w-5" />
+            </span>
+            <div>
+              <h3 className="text-xl font-bold text-white">RNM India</h3>
+              <p className="text-sm text-slate-400">Forward-thinking financial solutions</p>
             </div>
           </div>
-
-          <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="hover:text-blue-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-blue-400 transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="hover:text-blue-400 transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/team" className="hover:text-blue-400 transition-colors">
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link to="/insights" className="hover:text-blue-400 transition-colors">
-                  Insights
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-blue-400 transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold mb-4">Our Services</h4>
-            <ul className="space-y-2 text-sm">
-              <li><Link to="/services/audit-business-advisory" className="hover:text-blue-300 transition-colors">Audit & Business Advisory Services</Link></li>
-              <li><Link to="/services/taxation-services" className="hover:text-blue-300 transition-colors">Taxation Services</Link></li>
-              <li><Link to="/services/transaction-regulatory-advisory" className="hover:text-blue-300 transition-colors">Transaction & Regulatory Advisory</Link></li>
-              <li><Link to="/services/financial-consulting" className="hover:text-blue-300 transition-colors">Financial Consulting</Link></li>
-              <li><Link to="/services/corporate-finance" className="hover:text-blue-300 transition-colors">Corporate Finance</Link></li>
-              <li><Link to="/services/asset-management" className="hover:text-blue-300 transition-colors">Asset Management</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-semibold mb-4">Contact Info</h4>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start">
-                <MapPin className="w-5 h-5 mr-2 flex-shrink-0 text-cyan-300" />
-                <span>4/80, Janpath, New Delhi - 110001</span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="w-5 h-5 mr-2 flex-shrink-0 text-cyan-300" />
-                <span>+91-11-43192000</span>
-              </li>
-              <li className="flex items-center">
-                <Mail className="w-5 h-5 mr-2 flex-shrink-0 text-cyan-300" />
-                <span>rnm@rnm.in</span>
-              </li>
-            </ul>
+          <p className="max-w-xl text-sm leading-7 text-slate-300">
+            We partner with ambitious businesses to build resilient finance operations,
+            improve governance, and unlock strategic growth.
+          </p>
+          <div className="mt-6 flex items-center gap-3">
+            {[Linkedin, Twitter, Facebook].map((SocialIcon, index) => (
+              <a
+                key={index}
+                href="#"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-700 bg-slate-900 transition hover:scale-105 hover:border-slate-500 hover:text-white"
+              >
+                <SocialIcon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="border-t border-white/15 mt-8 pt-8 text-center text-sm">
-          <p>
-            &copy; {new Date().getFullYear()} RNM India. All rights reserved.
-          </p>
+        <div>
+          <h4 className="mb-4 text-base font-semibold text-white">Explore</h4>
+          <ul className="space-y-2.5 text-sm">
+            {quickLinks.map((item) => (
+              <li key={item.to}>
+                <Link to={item.to} className="group inline-flex items-center gap-1.5 text-slate-300 transition hover:text-white">
+                  {item.label}
+                  <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition group-hover:opacity-100" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="mb-4 text-base font-semibold text-white">Contact</h4>
+          <ul className="space-y-3 text-sm text-slate-300">
+            <li className="flex items-start gap-2.5">
+              <MapPin className="mt-0.5 h-4 w-4 text-emerald-400" />
+              4/80, Janpath, New Delhi - 110001
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Phone className="h-4 w-4 text-emerald-400" /> +91-11-43192000
+            </li>
+            <li className="flex items-center gap-2.5">
+              <Mail className="h-4 w-4 text-emerald-400" /> rnm@rnm.in
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-slate-800">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>&copy; {new Date().getFullYear()} RNM India. All rights reserved.</p>
+          <p>Built for clarity, trust, and long-term business value.</p>
         </div>
       </div>
     </footer>
