@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState, FormEvent } from 'react';
+import { type ChangeEvent, type FormEvent, useState } from 'react';
 import {
   Building,
   CheckCircle,
@@ -39,7 +39,7 @@ export default function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({
       ...formData,
@@ -100,16 +100,18 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      <section className="section-padding gradient-soft">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-padding bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.55 }}
           >
-            <span className="badge-highlight">Let&apos;s Build Something Great</span>
-            <h1 className="mt-5 text-4xl font-extrabold md:text-6xl">Contact Us</h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base text-muted md:text-xl">
+            <span className="inline-flex items-center rounded-full border border-white/35 bg-white/10 px-3 py-1 text-xs font-semibold">
+              Let&apos;s Build Something Great
+            </span>
+            <h1 className="mt-5 text-4xl font-extrabold text-white md:text-6xl">Contact Us</h1>
+            <p className="mx-auto mt-5 max-w-3xl text-base text-blue-100 md:text-xl">
               Reach us for any query and our team will respond promptly.
             </p>
           </motion.div>
@@ -279,21 +281,23 @@ export default function Contact() {
             <div className="surface-card">
               <h2 className="text-3xl font-bold">Contact Information</h2>
               <div className="mt-6 space-y-5">
-                {[{
-                  icon: Mail,
-                  title: 'Email Us',
-                  lines: ['info@rnm.in', 'support@rnm.in'],
-                },
-                {
-                  icon: Phone,
-                  title: 'Call Us',
-                  lines: ['+91 11 4567 8900', 'Mon-Fri: 9:00 AM - 6:00 PM IST'],
-                },
-                {
-                  icon: Clock,
-                  title: 'Business Hours',
-                  lines: ['Mon-Fri: 9:00 AM - 6:00 PM', 'Sat: 10:00 AM - 2:00 PM'],
-                }].map((item) => (
+                {[
+                  {
+                    icon: Mail,
+                    title: 'Email Us',
+                    lines: ['info@rnm.in', 'support@rnm.in'],
+                  },
+                  {
+                    icon: Phone,
+                    title: 'Call Us',
+                    lines: ['+91 11 4567 8900', 'Mon-Fri: 9:00 AM - 6:00 PM IST'],
+                  },
+                  {
+                    icon: Clock,
+                    title: 'Business Hours',
+                    lines: ['Mon-Fri: 9:00 AM - 6:00 PM', 'Sat: 10:00 AM - 2:00 PM'],
+                  },
+                ].map((item) => (
                   <div key={item.title} className="flex items-start gap-4">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100">
                       <item.icon className="h-5 w-5 text-primary" />
